@@ -1,0 +1,6 @@
+---
+# tasks file for roles/selinux
+- name: Enable SELinux
+  selinux:
+    policy: targeted
+    state: enforcing

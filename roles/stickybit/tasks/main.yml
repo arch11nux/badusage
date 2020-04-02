@@ -1,0 +1,8 @@
+---
+# tasks file for roles/stickybit
+# verifie si un usager a enlever / modifier le sticky bit
+- name: "verifier sticky bit dans l historique des commandes" 
+  shell: egrep "chmod" /home/*/.bash_history | awk '{ print $1, $2 }' | egrep "t" > "stickybit.$HOSTNAME.$(date +%F)" 
+  args:
+    chdir: /home/ransible/output 
+    executable: /bin/bash

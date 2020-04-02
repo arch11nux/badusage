@@ -1,0 +1,12 @@
+---
+# Ansible Playbook - check and report bad practices on Linux servers 
+#  (file texte/log) in /home/ransible/output 
+- name: "Playing with Ansible"
+  hosts: esxcentos
+  port: 22
+  gather_facts: no
+  roles:
+  - droits777
+  - stickybit
+  - gdbautologoutdisable
+  - rselinux

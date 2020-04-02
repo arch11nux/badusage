@@ -1,0 +1,22 @@
+---
+# tasks file for roles/droits777
+# valide si un usager a fait un mal usage 
+#   en donnant les droits 777 sur un fichier / repertoire
+- name: "Create folder /home/ransible/output"
+  file:
+    path: /home/ransible/output
+    state: directory
+    mode: '0750'
+    recurse: yes
+    owner: ransible
+    group: users
+- name: "chercher dans history si quelqun a fait un chmod 777"
+  shell: "egrep 'chmod' /home/*/.bash_history | grep 777 > 777-history.$HOSTNAME.$(date +%F)" 
+  args:
+    chdir: /home/ransible/output 
+    executable: /bin/bash
+- name: "chercher tous les fichiers avec les permissions 777 dans /tmp"
+  shell: find /tmp -perm 0777 -exec ls -l {} \; | awk '{ print $3, $9 }' > 777-files.$HOSTNAME.$(date +%F)
+  args:
+    chdir: /home/ransible/output 
+    executable: /bin/bash

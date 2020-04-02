@@ -1,0 +1,10 @@
+---
+grep_output:
+  - grep1: TMOUT
+    grep2: unset
+    grep3: dev
+    grep4: 2
+#  - grep1: TMOUT
+#    grep2: unset
+#    grep3: gdb
+#    grep4: unbind_variable

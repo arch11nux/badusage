@@ -1,0 +1,8 @@
+---
+# tasks file for roles/gdbautologoutdisable
+- name: verifier gdb auto-logout disable dans l historique des commandes
+  shell: "egrep -i 'TMOUT' /home/*/.bash_history |egrep 'unset.*gdb.*unbind_variable' > gdb_auto-logout_disable.$HOSTNAME.$(date +%F)"
+  args:
+    chdir: /home/ransible/output 
+    executable: /bin/bash
+  ignore_errors: true

@@ -1,0 +1,18 @@
+---
+# tasks file for roles/bashrcsec
+- name: trouver fichier .bash_profile dans /home
+  find:
+    paths: /home
+    file_type: file
+    recurse: yes
+    patterns: '.bash_profile'
+  register: output
+- debug: var=item.path
+  with_items: "{{ output.files }}"
+- name: Adding more details to history/bash_profile
+  lineinfile:
+    dest: "{{ item.path }}"
+    state: present
+    line: 'export HISTTIMEFORMAT="%d/%m/%y %T "'
+    insertafter: 'EOF'
+  with_items: "{{ output.files }}"

@@ -3,4 +3,19 @@
 - name: Enable SELinux
   selinux:
     policy: targeted
-    state: enforcing
+    state: check_only
+
+- name: "CCE-80445-0, Ensure mcstrans is removed"
+  package:
+    name: mcstrans
+    state: absent
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+  tags:
+    - package_mcstrans_removed
+    - unknown_severity
+    - disable_strategy
+    - low_complexity
+    - low_disruption
+    - no_reboot_needed
+    - CCE-80445-0
+

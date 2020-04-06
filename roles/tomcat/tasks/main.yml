@@ -5,3 +5,14 @@
   import_tasks: install.yml
   tags:
     - install
+
+- name: Tomcat | Service
+  import_tasks: service.yml
+  tags:
+    - service
+
+- name: Tomcat | Config
+  import_tasks: config.yml
+  tags:
+    - config
+

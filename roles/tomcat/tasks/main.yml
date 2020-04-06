@@ -1,0 +1,35 @@
+---
+# tasks file for roles/tomcat
+
+- name: Tomcat | Ensure tomcat group
+  group:
+    name: "{{ tomcat_group }}"
+
+- name: Tomcat | Ensure tomcat user
+  user:
+    name: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    shell: /bin/bash
+
+- name: Tomcat | Create logs path
+  file:
+    path: "{{ tomcat_logs_path }}"
+    state: directory
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+  when: tomcat_logs_path is defined
+
+- name: Tomcat | Create install path
+  file:
+    path: "{{ tomcat_install_path }}"
+    state: directory
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+
+- name: copy Tomcat
+  copy:
+    src: ./files/apache-tomcat-8.5.53.tar
+    dest: /opt/apache-tomcat-8.5.53.tar
+
+- name: Extract Tomcat archive
+  command: tar xvf /opt/apache-tomcat-8.5.53.tar -C /opt/tomcat

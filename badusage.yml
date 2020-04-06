@@ -6,8 +6,9 @@
   port: 22
   gather_facts: no
   roles:
-  - droits777
-  - stickybit
-  - gdbautologoutdisable
-  - rselinux
-  - bashrcsec
+#  - droits777
+#  - stickybit
+#  - gdbautologoutdisable
+#  - rselinux
+#  - bashrcsec
+  - tomcat

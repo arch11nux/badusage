@@ -15,12 +15,14 @@ $ sudo visudo
   - gdbautologoutdisable
   - rselinux
   - bashrcsec   # inserer des parametres dans bash.rc
+  - tomcat
 
 $ ansible-galaxy init roles/droits777
 $ ansible-galaxy init roles/stickybit
 $ ansible-galaxy init roles/gdbautologoutdisable
 $ ansible-galaxy init roles/rselinux
 $ ansible-galaxy init roles/bashrcsec
+$ ansible-galaxy init roles/tomcat
 ==============================================
 Exemple de rapport:
 -------------------

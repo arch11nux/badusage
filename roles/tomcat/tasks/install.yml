@@ -28,7 +28,16 @@
 - name: copy Tomcat
   copy:
     src: ./files/apache-tomcat-8.5.53.tar
-    dest: /opt/apache-tomcat-8.5.53.tar
+    dest: /tmp/apache-tomcat-8.5.53.tar
 
-- name: Extract Tomcat archive
-  command: tar xvf /opt/apache-tomcat-8.5.53.tar -C /opt/tomcat
+#- name: Extract Tomcat archive
+#  command: tar xvf /opt/apache-tomcat-8.5.53.tar -C /opt/tomcat
+
+- name: Tomcat | Download & Extract Tomcat
+  unarchive:
+    src: /tmp/apache-tomcat-8.5.53.tar
+    remote_src: yes
+    dest: "{{ tomcat_install_path }}"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    mode: 0750

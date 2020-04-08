@@ -9,6 +9,8 @@
 #  - droits777
 #  - stickybit
 #  - gdbautologoutdisable
+  - checkdiskspace
 #  - rselinux
 #  - bashrcsec
-  - tomcat
+#  - java
+#  - tomcat

@@ -1,0 +1,15 @@
+---
+# tasks file for roles/java
+
+- name: copy Java
+  copy:
+    src: ./files/jdk-8u241-linux-x64.rpm
+    dest: /tmp/jdk-8u241-linux-x64.rpm
+
+- name: Install Java package.
+  yum:
+     name: /tmp/jdk-8u241-linux-x64.rpm
+     state: present
+
+- name: Set JAVA_HOME
+  lineinfile: dest=/etc/environment state=present regexp='^JAVA_HOME' line='JAVA_HOME=/usr/bin/java'

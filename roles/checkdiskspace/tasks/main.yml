@@ -1,0 +1,8 @@
+---
+# tasks file for roles/checkdiskspace
+- name: Check disk space usage on servers
+  shell: df -Th
+  register: result
+- debug:
+    var: result.stdout_lines
+#  when: ansible_os_family == "CentOs" or ansible_os_family == "RedHat"
